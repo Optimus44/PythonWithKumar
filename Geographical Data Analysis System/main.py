@@ -26,19 +26,19 @@ The Menu:
 """)
 
 try:
-    choice = int(input("Choice: "))
+    choice = int(input("Enter Your Choice: "))
 
     while choice != 6:
 
         # View Location
         if choice == 1:
+            print("Location Data: \n")
             view_locations(locations)
 
 
         # Filter Locations by Region
         elif choice == 2:
-            print("Filter by Region")
-            region = input("Enter Region: ")
+            region = input("Enter the Region to Filter (Northern, Southern, Eastern, Western): ")
             filtered_list = filter_by_region(locations, region)
 
             if filtered_list:
@@ -51,8 +51,8 @@ try:
         # Calculate Distance Between Locations
         elif choice == 3:
             print("Calculate Distance")
-            location_1 = input("First Location ID: ")
-            location_2 = input("Second Location ID: ")
+            location_1 = input("Enter the First Location ID: ")
+            location_2 = input("Enter the Second Location ID: ")
 
             # Search for the locations - returns NONE if no found.
             first_location = search_location(locations, location_1)
@@ -81,12 +81,13 @@ try:
         elif choice == 4:
             # Enter a region and display total locations and the furthest distance in the region.
             print("Generate Region Insights")
-            region = input("Enter Region: ")
+            region = input("Enter Your Region: ")
+            print("Region: ", region)
             region_locations = filter_by_region(locations, region)
             if region_locations:
-                print(f"\nThe {region} region has {len(region_locations)} locations.") # Total Regions
+                print(f"\nTotal Locations: {len(region_locations)}.") # Total Regions
                 farthest, location1, location2 = furthest_distance(region_locations)  # Tuple unpacking.
-                print(f"Farthest Distance is: {farthest} Km between {location1['name']} and {location2['name']}") # Furthest Distance
+                print(f"Farthest Locations: {location1['name']} and {location2['name']} (Distance: {farthest:.2f} Km)") # Furthest Distance
             else:
                 print("\nRegion not Found")
 
@@ -109,17 +110,17 @@ try:
 
         # Display the Menu
         print("""
-        The Menu:
-            1. View Location Data
-            2. Filter Locations by Region
-            3. Calculate Distance Between Locations
-            4. Generate Region Insights
-            5. Search Locations
-            6. Exit
+    The Menu:
+        1. View Location Data
+        2. Filter Locations by Region
+        3. Calculate Distance Between Locations
+        4. Generate Region Insights
+        5. Search Locations
+        6. Exit
         """)
-        choice = int(input("Your Choice: "))
+        choice = int(input("Enter Your Choice: "))
 
-    print("Program Quit!")
+    print("Thank you for using the Geographical Data Analysis System")
 
 except ValueError:
     print("\nProgram Terminated. Use Numeric Values Only.")
