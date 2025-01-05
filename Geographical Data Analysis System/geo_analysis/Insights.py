@@ -1,61 +1,30 @@
 from .DistanceCalculation import calculate_distance
 
 
-def total_regions(locations):
-    """
-    Analyzes a list of location dictionaries and calculates the total count
-    of each region specified in the input list. The regions counted include
-    'Eastern', 'Western', 'Northern', 'Southern', and 'Central'. The function
-    outputs the counts for each region but does not return any value.
-
-    :param locations: A list of dictionaries where each dictionary contains
-                      a 'region' key indicating the region to which a location
-                      belongs ('Eastern', 'Western', 'Northern', 'Southern',
-                      or 'Central').
-    :type locations: list[dict]
-
-    :return: None
-    """
-
-    east_locations = 0
-    west_locations = 0
-    north_locations = 0
-    south_locations = 0
-    central_locations = 0
-
-    for location in locations:
-        if location['region'] == 'Eastern':
-            east_locations += 1
-        elif location['region'] == 'Western':
-            west_locations += 1
-        elif location['region'] == 'Northern':
-            north_locations += 1
-        elif location['region'] == 'Southern':
-            south_locations += 1
-        else:
-            central_locations += 1
-
-    # These should be displayed depending on user input
-
-    location_input = input('Enter location: ')
-    if location_input == 'Eastern':
-        print('East: ', east_locations)
-    elif location_input == 'Western':
-        print('West: ', west_locations)
-    elif location_input == 'Northern':
-        print('North: ', north_locations)
-    elif location_input == 'Southern':
-        print('South: ', south_locations)
-    elif location_input == 'Central':
-        print('Central: ', central_locations)
-    else:
-        print('Invalid location')
-
-
-def total_regionss(region):
-    pass
-
 def furthest_distance(list_of_locations):
+    """
+    Calculate the furthest distance between two locations in a list.
+
+    This function computes the maximum distance between any two locations
+    from the given list of locations. Each location is represented as a
+    dictionary and must contain 'coordinates' in its data structure. It uses
+    `calculate_distance` to compute the distance between two points. The
+    function iterates through the list of locations in pairs, comparing
+    distances, and returns the maximum distance found alongside the two
+    location dictionaries corresponding to this distance.
+
+    :param list_of_locations: A list of dictionaries where each dictionary
+        must contain a key 'coordinates', which represents the coordinates
+        of the given location.
+    :type list_of_locations: list[dict]
+
+    :return: A tuple containing:
+        - (float) The farthest distance calculated.
+        - (dict) The first location dictionary of the farthest pair.
+        - (dict) The second location dictionary of the farthest pair.
+    :rtype: tuple[float, dict, dict]
+    """
+    # This should receive a filtered location_list
     i = 0
     farthest_distance = 0
     for point_a in list_of_locations:
@@ -64,9 +33,8 @@ def furthest_distance(list_of_locations):
             distance = calculate_distance(point_a['coordinates'], point_b['coordinates'])
             if distance > farthest_distance:
                 farthest_distance = distance
+                location_1 = point_a
+                location_2 = point_b
 
-    return farthest_distance
+    return farthest_distance, location_1, location_2
 
-
-def try_this():
-    pass
