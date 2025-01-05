@@ -17,28 +17,47 @@ def view_locations(a_list):
               f"Region: {location['region']}, "
               f"Coordinates: {location['coordinates']}")
 
+
+# View only one location
+def view_one_location(a_location):
+    """
+    Displays detailed information about a specific location.
+
+    This function takes a dictionary representing a location and prints its
+    details in a structured format, including its ID, name, region, and
+    coordinates.
+
+    :param a_location: Dictionary containing location data. It is expected to
+        have the following keys: 'id', 'name', 'region', and 'coordinates'.
+    :type a_location: dict
+
+    :return: None
+    """
+    print(f"ID: {a_location['id']}, "
+              f"Name: {a_location['name']}, "
+              f"Region: {a_location['region']}, "
+              f"Coordinates: {a_location['coordinates']}")
+
+
 def search_location(locations, location_id):
     """
-    Searches for a location by its unique identifier within a list of locations.
+    Search for a location in a list of locations based on a given location ID.
 
-    This function iterates through the provided list of locations and checks if the
-    provided `location_id` matches the 'id' of any location in the list. If a match
-    is found, it formats and returns the location details. If no match is found, it
-    returns an appropriate message indicating that the location could not be found.
+    This function iterates through a list of location dictionaries and attempts
+    to find the location that matches the specified location_id. If a match is
+    found, the matching location dictionary is returned. If no match is found,
+    the function returns None.
 
-    :param location_id: The unique identifier of the location to be searched.
-    :type location_id: str
-    :param locations: A list of dictionaries containing location information. Each
-        dictionary is expected to have the keys 'id', 'name', 'region', and
-        'coordinates'.
+    :param locations: A list of dictionaries, where each dictionary represents
+        a location and contains an 'id' key and other related location details.
     :type locations: list[dict]
-    :return: A formatted string with the location details if found, or a message
-        indicating that the location could not be found.
-    :rtype: str
+    :param location_id: The identifier of the location to be searched.
+    :type location_id: int or str
+    :return: The dictionary of the matching location if found, or None if there's
+        no match in the list of locations.
+    :rtype: dict or None
     """
     for location in locations:
         if location['id'] == location_id:
-            print(f"ID: {location['id']}, "
-                    f"Name: {location['name']}, "
-                    f"Region: {location['region']}, "
-                    f"Coordinates: {location['coordinates']}")
+            return location
+    return None
