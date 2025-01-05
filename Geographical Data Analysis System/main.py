@@ -63,7 +63,7 @@ try:
                 # Get the coordinates
                 point_a = first_location['coordinates']
                 point_b = second_location['coordinates']
-                print(f"Distance between {first_location['name']} and {second_location['name']} is {calculate_distance(point_a, point_b)} km")
+                print(f"Distance between {first_location['name']} and {second_location['name']} is {calculate_distance(point_a, point_b):.2f} km")
 
             else:
                 # Check which location not found to provide a specific message to the user:
