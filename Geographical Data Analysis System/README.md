@@ -1,4 +1,4 @@
-# Geographical Dta Analysis System
+# Geographical Data Analysis System
 
 ## Tuesday, December 24, 2024
 
